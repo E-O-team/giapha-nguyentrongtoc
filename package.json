@@ -1,0 +1,37 @@
+{
+    "name": "giapha-react-redux",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm-run-all --parallel dev watch:build",
+        "watch:build": "webpack --watch",
+        "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
+        "dev": "nodemon index.js",
+        "compile": "webpack --config webpack.config.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.19.0",
+        "keystone": "^4.1.1",
+        "lodash": "^4.17.11",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-redux": "^7.1.0",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0",
+        "underscore": "^1.9.1",
+        "webpack-dev-server": "^3.7.2"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.0.6",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "npm-run-all": "^4.1.5",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.5"
+    }
+}
