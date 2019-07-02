@@ -4,7 +4,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+#webpack generated file
+/server/public/bundle.js
 # Runtime data
 pids
 *.pid
