@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Box, Anchor} from 'grommet';
 // Remember our thunk this is where we will need to make use of it
-import { fetchPeople, peopleFetchData } from '../actions/actions.js';
+import { fetchPersonData, loading } from '../redux/actions/actions.js';
 // We gonna use lodash to map over our recipe object
 import _ from 'lodash'
+import PhaDo from '../components/PhaDo';
 
 class Person extends Component {
     constructor(props) {
@@ -12,31 +14,35 @@ class Person extends Component {
 
     // Fetch recipes when component is mounted
     componentDidMount() {
-        const API_URL = 'http://localhost:3000/api/people/';
-        // I am setting some delay to simulate a real world request
-        setTimeout(() => { this.props.fetchPeople(API_URL); }, 1000);
+        const API_URL = 'http://localhost:3000/api/person/' + this.props.person._id;
+        this.props.fetchPerson(API_URL)
     }
 
-    // renderPeople = people => {
-    //
-    // }
-
     render() {
-        const {loading, people} = this.props
-        if(loading || people.length == 0){
-            return(
-                <h1>LOADING...</h1>
-            )
-        }
-        return people.map(person => (
-            <h1 key={person._id}>{person.fullName}</h1>
-        ))
+        const {person} = this.props
+        return(
+            <Box
+                gap="medium"
+                align="center"
+                pad="medium"
+            >
+                <Box>
+                    <h1>{person.fullName}</h1>
+                    <h1>{person.sex}</h1>
+                </Box>
+                <Box>
+                    {person.children &&
+                        <PhaDo history={this.props.history}/>
+                    }
+                </Box>
+            </Box>
+        )
     };
 };
 
 const mapStateToProps = (state) => {
     return {
-        people: state.people,
+        person: state.person,
         loading: state.loading
     };
 }
@@ -44,7 +50,8 @@ const mapStateToProps = (state) => {
 // anything returned from here will end up in the props
 const mapDispatchToProps = dispatch => ({
     // Our thunk will be mapped to this.props.fetchRecipe
-    fetchPeople: (url) => dispatch(peopleFetchData(url)),
+    fetchPerson: (url) => dispatch(fetchPersonData(url)),
+    loading: (loading) => dispatch(loading(loading)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Person);

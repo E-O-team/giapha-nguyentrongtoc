@@ -14,22 +14,35 @@ module.exports = {
 		filename: 'bundle.js',
 		publicPath: 'server/public/js/',
   },
+  devServer:{
+    hot: true,
+  },
   // Adding babel loader to compile our javascript and jsx files
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: [
-							'@babel/react',
-							'@babel/env',
-						],
-					},
-				},
-      },
+				use: [
+                    {
+    					loader: 'babel-loader',
+    					options: {
+    						presets: [
+    							'@babel/react',
+    							'@babel/env',
+                                {'plugins': ['@babel/plugin-proposal-class-properties']}
+    						],
+	                   },
+                   },
+                ],
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {loader: 'style-loader'},
+                    {loader: 'css-loader'},
+                ]
+            }
     ]
 	},
 	resolve: {

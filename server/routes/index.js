@@ -12,6 +12,8 @@ exports = module.exports = function (app) {
 	// Get access to the API route in our app
     // console.log(routes.api);
 	app.get('/api/people/', keystone.middleware.api, routes.api.person.list);
+	app.get('/api/person/:id', keystone.middleware.api, routes.api.person.getPerson)
+	app.get('/api/person/children/:id', keystone.middleware.api, routes.api.person.getChildren)
 	// Set up the default app route to  http://localhost:3000/index.html
 	app.get('/', function (req, res) {
 		// Render some simple boilerplate html
@@ -21,11 +23,21 @@ exports = module.exports = function (app) {
 		<!doctype html>
 		<html>
 			<head>
-				<title>Keystone With React And Redux</title>
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+				/>
+				<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+				<title>Gia Phả Phạm Phú</title>
+				<style type="text/css">
+					body{
+						margin: 0
+					}
+				</style>
 			</head>
-      <body>
-        <div class="react-container">
-        </div>
+			<body>
+				<div class="react-container"></div>
 				<script src="bundle.js"></script>
 			</body>
 		</html>
