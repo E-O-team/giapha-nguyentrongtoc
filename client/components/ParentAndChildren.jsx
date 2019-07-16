@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Box } from 'grommet';
 import PersonCard from './PersonCard';
 import { fetchPersonData, loading } from '../redux/actions/actions.js';
-import { SteppedLineTo } from 'react-lineto';
+import { Tree, TreeNode } from 'react-organizational-chart'
 class ParentAndChildren extends PureComponent {
     constructor(props){
         super(props)
@@ -34,7 +34,12 @@ class ParentAndChildren extends PureComponent {
 
     render() {
         const {person} = this.state
-        const level = this.props.level || 0
+        const {level} = this.props
+        const RenderChild = ({child}) => {
+            return <ParentAndChildren initPerson={child} level={level + 1}/>
+        }
+
+
         if(this.state.loading){
             return (
                 <Box>
@@ -56,25 +61,63 @@ class ParentAndChildren extends PureComponent {
             //         })}
             //     </Box>
             // )
-            return(
-                <Box
-                    align="center"
-                >
-                    {person.children.length > 0 &&
-                        <Box direction="row" gap="medium">
-                            {person.children.map((child, i) => {
-                                return(
-                                    <Box key={child._id} align="center">
-                                        <PersonCard className={child._id} key={child._id} person={child} history={this.props.history}/>
-                                        {child.children.length > 0 && <ParentAndChildren initPerson={child}/>}
 
-                                    </Box>
-                                )
-                            })}
-                        </Box>
-                    }
-                </Box>
-            )
+
+            if(person.children.length > 0){
+                return(
+                    <Box direction="row" justify="center">
+                        {person.children.map((child, i) => {
+                            return(
+                                <TreeNode
+                                    key={child._id}
+                                    label={
+                                        <Box align="center">
+                                            <PersonCard className={child._id} key={child._id} person={child} history={this.props.history}/>
+                                        </Box>
+                                    }
+                                >
+                                    {(child.children.length > 0 && this.props.level < 3 ) ?
+                                        <RenderChild child={child}/>
+                                        :
+                                        null
+                                    }
+                                </TreeNode>
+                            )
+                        })}
+                    </Box>
+                )
+            }else{
+                return null
+            }
+
+
+
+
+            // return(
+            //     <div>
+            //         {person.children.length > 0 &&
+            //             <Box direction="row" justify="center">
+            //                 {person.children.map((child, i) => {
+            //                     if(!child.children.length > 0){
+            //                         console.log(child.fullName);
+            //                     }
+            //                     return(
+            //                         <TreeNode
+            //                             key={child._id}
+            //                             label={
+            //                                 <Box align="center">
+            //                                     <PersonCard className={child._id} key={child._id} person={child} history={this.props.history}/>
+            //                                 </Box>
+            //                             }
+            //                         >
+            //                             <RenderChild child={child}/>
+            //                         </TreeNode>
+            //                     )
+            //                 })}
+            //             </Box>
+            //         }
+            //     </div>
+            // )
         }
     }
 

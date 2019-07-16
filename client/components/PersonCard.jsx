@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Box } from 'grommet';
+import { Box, Heading } from 'grommet';
 import { choosePerson } from '../redux/actions/actions.js';
 import { connect } from 'react-redux';
 import Img from 'react-image'
@@ -28,18 +28,16 @@ class PersonCard extends React.PureComponent {
         }
         return (
             <Box
-                responsive={true}
                 className="personBox"
                 key={person._id}
                 align="center"
-                animation="slideUp"
-                width="150px"
-                height="150px"
-                pad="small"
+                width="90px"
+                height="120px"
+
                 onClick={this.handleChoosedPerson}
             >
                 <RenderImage person={person}/>
-                <h5>{person.fullName}</h5>
+                <p>{person.fullName}</p>
             </Box>
         );
     }

@@ -39,10 +39,11 @@ class People extends Component {
 
         return(
             <Box
+                justify="start"
                 direction="row"
                 gap="medium"
                 align="center"
-                pad="medium"
+                pad="small"
             >
                 {people.map(person => (
                     <PersonCard key={person._id} person={person} history={this.props.history}/>
