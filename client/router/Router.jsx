@@ -25,9 +25,8 @@ const AppBar = (props) => (
         direction="row"
         align="center"
         justify="between"
-        background="brand"
+        background="#d5dcec"
         pad={{left: 'medium', right: 'small', vertical: 'small'}}
-        elevation='medium'
         style={{zIndex: '1'}}
         {...props}
     />
@@ -38,10 +37,10 @@ export default class AppRouter extends React.Component{
     render(){
         return(
             <Router>
-                <Grommet theme={theme}>
+                <Grommet theme={theme} full>
                     <ResponsiveContext.Consumer>
                         {size => (
-                            <Box fill>
+                            <Box>
                                 <AppBar>
                                     <Redirect to="/people"/>
                                     <NavLink to="/people">people</NavLink>

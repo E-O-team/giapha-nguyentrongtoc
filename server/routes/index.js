@@ -32,7 +32,8 @@ exports = module.exports = function (app) {
 				<title>Gia Phả Phạm Phú</title>
 				<style type="text/css">
 					body{
-						margin: 0
+						margin: 0;
+						height: 100%;
 					}
 				</style>
 			</head>

@@ -44,9 +44,18 @@ class People extends Component {
                 gap="medium"
                 align="center"
                 pad="small"
+                wrap={true}
+                background="#a3c4e4"
             >
                 {people.map(person => (
-                    <PersonCard key={person._id} person={person} history={this.props.history}/>
+                    <Box
+                        align="center"
+                        justify="center"
+                        pad="0px"
+                        margin={{bottom: '5px'}}
+                    >
+                        <PersonCard key={person._id} person={person} history={this.props.history}/>
+                    </Box>
                 ))}
             </Box>
         )

@@ -7,9 +7,62 @@ import ParentAndChildren from './ParentAndChildren';
 import PersonCard from './PersonCard';
 import { Tree, TreeNode } from 'react-organizational-chart'
 class PhaDo extends PureComponent {
+    constructor(props){
+        super(props)
+        this.state={
+            generationsToFetch: 4
+        }
+    }
+
+    handleDropButton = (value) => {
+        this.setState({
+            generationsToFetch: value
+        })
+    }
+
     render() {
         const {person, history} = this.props
+
         return(
+            <Box>
+            <Box
+                align="center"
+                justify="center"
+                pad="medium"
+            >
+                <DropButton
+                    label={this.state.generationsToFetch+1 + ' đời'}
+                    dropAlign={{ top: 'bottom', right: 'right' }}
+                    dropContent={
+                        <Box pad="medium" background="light-2" gap="small">
+                                <Button
+                                    label="2 đời"
+                                    onClick={() => this.handleDropButton(1)}
+                                />
+                                <Button
+                                    label="3 đời"
+                                    onClick={() => this.handleDropButton(2)}
+                                />
+                                <Button
+                                    label="4 đời"
+                                    onClick={() => this.handleDropButton(3)}
+                                />
+                                <Button
+                                    label="5 đời"
+                                    onClick={() => this.handleDropButton(4)}
+                                />
+                                <Button
+                                    label="6 đời"
+                                    onClick={() => this.handleDropButton(5)}
+                                />
+                                <Button
+                                    label="7 đời"
+                                    onClick={() => this.handleDropButton(6)}
+                                />
+                        </Box>
+                    }
+                />
+            </Box>
             <Box
                 align='center'
                 key={person._id}
@@ -20,35 +73,10 @@ class PhaDo extends PureComponent {
                 }}
                 responsive={true}
             >
-                <Box
-                    direction="row"
-                    justify="end"
-                    align="center"
-                    pad="medium"
-                    fill="horizontal"
-                >
-                    <DropButton
-                        label="Chọn số đời"
-                        dropAlign={{ top: 'bottom', right: 'right' }}
-                        dropContent={
-                            <Box>
-                                <Box pad="large" background="light-2">
-                                    <Button
-                                        label="2 đời"
-                                        onClick={() => {}}
-                                    />
-                                </Box>
-                                <Box pad="large" background="light-2">
-                                    <Button
-                                        label="3 đời"
-                                        onClick={() => {}}
-                                    />
-                                </Box>
-                            </Box>
-                        }
-                    />
-                </Box>
                 <Tree
+                    lineColor={'#9070e8'}
+                    lineWidth={"2px"}
+                    lineBorderRadius={"10px"}
                     label={
                         <Box align="center">
                             <PersonCard person={person} history={this.props.history}/>
@@ -56,8 +84,9 @@ class PhaDo extends PureComponent {
                     }
 
                 >
-                    <ParentAndChildren initPerson={person} history={history} level={1}/>
+                    <ParentAndChildren initPerson={person} history={history} level={1} generationsToFetch={this.state.generationsToFetch}/>
                 </Tree>
+            </Box>
             </Box>
         )
     }

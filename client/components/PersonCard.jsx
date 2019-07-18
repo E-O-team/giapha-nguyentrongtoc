@@ -1,9 +1,14 @@
 import React, { PureComponent } from 'react';
 import { Box, Heading } from 'grommet';
+import styled from 'styled-components';
 import { choosePerson } from '../redux/actions/actions.js';
 import { connect } from 'react-redux';
 import Img from 'react-image'
 import { withRouter } from 'react-router-dom'
+
+const StyleBox = styled(Box)`
+
+`
 
 class PersonCard extends React.PureComponent {
     constructor(props){
@@ -31,10 +36,13 @@ class PersonCard extends React.PureComponent {
                 className="personBox"
                 key={person._id}
                 align="center"
-                width="90px"
-                height="120px"
-
                 onClick={this.handleChoosedPerson}
+                background={{color: '#fc746c'}}
+                pad={{vertical: "5px"}}
+                border={{
+                    color: 'border',
+                    side: 'all'
+                }}
             >
                 <RenderImage person={person}/>
                 <p>{person.fullName}</p>

@@ -24,8 +24,24 @@ class Person extends Component {
             <Box
                 gap="medium"
                 align="center"
-                pad="medium"
+                pad={{
+                    bottom: "10px"
+                }}
+                background="#a3c4e4"
+                fill
             >
+                <Box>
+                    <h1>{person.fullName}</h1>
+                    <h1>{person.sex}</h1>
+                </Box>
+                <Box>
+                    <h1>{person.fullName}</h1>
+                    <h1>{person.sex}</h1>
+                </Box>
+                <Box>
+                    <h1>{person.fullName}</h1>
+                    <h1>{person.sex}</h1>
+                </Box>
                 <Box>
                     <h1>{person.fullName}</h1>
                     <h1>{person.sex}</h1>

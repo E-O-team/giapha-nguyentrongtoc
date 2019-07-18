@@ -34,9 +34,9 @@ class ParentAndChildren extends PureComponent {
 
     render() {
         const {person} = this.state
-        const {level} = this.props
+        const {level, generationsToFetch} = this.props
         const RenderChild = ({child}) => {
-            return <ParentAndChildren initPerson={child} level={level + 1}/>
+            return <ParentAndChildren initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
         }
 
 
@@ -76,7 +76,7 @@ class ParentAndChildren extends PureComponent {
                                         </Box>
                                     }
                                 >
-                                    {(child.children.length > 0 && this.props.level < 3 ) ?
+                                    {(child.children.length > 0 && this.props.level < generationsToFetch ) ?
                                         <RenderChild child={child}/>
                                         :
                                         null
