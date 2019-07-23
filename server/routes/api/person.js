@@ -8,7 +8,7 @@ var keystone = require('keystone');
 var Person = keystone.list('Person');
 // Creating the API end point
 exports.list = function (req, res) {
-	Person.model.find().select('fullName sex image').limit(Number(req.query.limit)).exec((err, item) => {
+	Person.model.find().populate('children parent partner').limit(Number(req.query.limit)).exec((err, item) => {
 		if(err) return res.apiError('database error', err);
 		if(!item) return res.apiError('not found')
 		res.apiResponse({
@@ -18,7 +18,7 @@ exports.list = function (req, res) {
 };
 
 exports.getPerson = (req, res) => {
-	Person.model.findById(req.params.id).populate('children').exec((err, item) => {
+	Person.model.findById(req.params.id).populate('children parent partner').exec((err, item) => {
 		if(err) return res.apiError('database error', err);
 		if(!item) return res.apiError('not found')
 		res.apiResponse({

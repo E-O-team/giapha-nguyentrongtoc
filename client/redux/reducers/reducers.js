@@ -28,8 +28,13 @@ const getPerson = (state = {}, action) => {
 
 }
 
+const domain = (state = 'http://192.168.0.117:3000/api/', {}) => {
+    return state
+}
+
 
 const reducers = combineReducers({
+    domain: domain,
     person: getPerson,
     people: getPeople,
     loading: loading,

@@ -14,7 +14,7 @@ class ParentAndChildren extends PureComponent {
     }
 
     getChildren = () => {
-        axios.get("http://localhost:3000/api/person/" + this.props.initPerson._id)
+        axios.get("http://192.168.0.117:3000/api/person/" + this.props.initPerson._id)
         .then(res => this.setState({
             loading: false,
             person: res.data.person
@@ -43,7 +43,7 @@ class ParentAndChildren extends PureComponent {
         if(this.state.loading){
             return (
                 <Box>
-                    <h1>loading...</h1>
+                    <h3>đang tải...</h3>
                 </Box>
             );
         }else{
@@ -72,7 +72,7 @@ class ParentAndChildren extends PureComponent {
                                     key={child._id}
                                     label={
                                         <Box align="center">
-                                            <PersonCard className={child._id} key={child._id} person={child} history={this.props.history}/>
+                                            <PersonCard className={child._id} key={child._id} person={child} history={this.props.history} Phado={true}/>
                                         </Box>
                                     }
                                 >

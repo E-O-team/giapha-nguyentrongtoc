@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import PersonCard from '../components/PersonCard';
 // Remember our thunk this is where we will need to make use of it
 import { fetchPeople, peopleFetchData, choosePerson, } from '../redux/actions/actions.js';
-
+const Background = 'https://res.cloudinary.com/giaphatocphamphu/image/upload/v1563523660/phadobg.png'
 class People extends Component {
 
     componentDidMount() {
-        this.props.fetchPeople("http://localhost:3000/api/people")
+        this.props.fetchPeople()
     }
 
     handleChoosedPerson = (e) => {
@@ -19,17 +19,6 @@ class People extends Component {
     }
 
     render() {
-
-        const RenderImage = ({person}) => {
-            if(person.image){
-                return <Img className="personBoxImage" src={person.image.secure_url}/>
-            }else if (person.sex == "nam") {
-                return <Img className="personBoxImage" src="https://res.cloudinary.com/giaphatocphamphu/image/upload/v1530199129/jhl4nt2qd4txvwt3h7y0.jpg"/>
-            }else {
-                return <Img className="personBoxImage" src="https://res.cloudinary.com/giaphatocphamphu/image/upload/v1530199104/iplgjeykuctemjmcqtfo.jpg"/>
-            }
-        }
-
         const { loading, people } = this.props
         if(loading || people.length == 0){
             return(
@@ -43,9 +32,15 @@ class People extends Component {
                 direction="row"
                 gap="medium"
                 align="center"
-                pad="small"
+                pad="large"
                 wrap={true}
-                background="#a3c4e4"
+                style={{
+                    backgroundImage: `url(${Background})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: '150% 120%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundAttachment: 'fixed',
+                }}
             >
                 {people.map(person => (
                     <Box
@@ -53,8 +48,9 @@ class People extends Component {
                         justify="center"
                         pad="0px"
                         margin={{bottom: '5px'}}
+                        key={person._id}
                     >
-                        <PersonCard key={person._id} person={person} history={this.props.history}/>
+                        <PersonCard key={person._id} person={person} history={this.props.history} Phado={false}/>
                     </Box>
                 ))}
             </Box>
@@ -66,13 +62,14 @@ class People extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        domain: state.domain,
         people: state.people,
         loading: state.loading
     };
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchPeople: (url) => dispatch(peopleFetchData(url)),
+    fetchPeople: () => dispatch(peopleFetchData()),
 });
 
 

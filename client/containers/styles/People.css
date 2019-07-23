@@ -8,6 +8,22 @@
     overflow: auto;
     width: 80px;
     height: 130px;
+    cursor: pointer;
+
+}
+
+.clickableWithHover Box:hover{
+    background-color: '#fc746c'
+}
+
+.personDetail b,p{
+    color: 'white';
+    line-height: 34px;
+    font-size: 30px;
+    margin: 10px;
+}
+.personDetailPage{
+    background-image: url("/images/phadobg.png");
 }
 
 .personBox p{
@@ -20,6 +36,21 @@
     margin-right: 7.5px;
 }
 
+.coupleBox{
+    overflow: auto;
+    width: 190px;
+    height: 130px;
+    cursor: pointer;
+
+}
+
+
+
+.personPageImage{
+    max-width: 100%;
+    height: auto;
+}
+
 @media only screen and (max-width:767px) {
     .personBoxImage{
         width: 30px;
@@ -30,12 +61,26 @@
         font-size: 4.6px;
         margin: 0px;
         padding: 0px;
+        margin-top: 2px;
+        margin-bottom: 0px;
+        margin-left: 7.5px;
+        margin-right: 7.5px;
     }
     .personBox{
-
         margin: 0px;
-        background-color: yellow;
         width: 45px;
         height: 60px;
+    }
+    .personDetail b,p{
+        font-size: 17px;
+        margin: 5px;
+    }
+    .coupleBox{
+        margin: 0px;
+        overflow: auto;
+        width: 90px;
+        height: 60px;
+        cursor: pointer;
+
     }
 }

@@ -31,10 +31,11 @@ class PhaDo extends PureComponent {
                 pad="medium"
             >
                 <DropButton
+                    color='brand_2'
                     label={this.state.generationsToFetch+1 + ' đời'}
                     dropAlign={{ top: 'bottom', right: 'right' }}
                     dropContent={
-                        <Box pad="medium" background="light-2" gap="small">
+                        <Box pad="small" background="brand_2" gap="small">
                                 <Button
                                     label="2 đời"
                                     onClick={() => this.handleDropButton(1)}
@@ -74,12 +75,12 @@ class PhaDo extends PureComponent {
                 responsive={true}
             >
                 <Tree
-                    lineColor={'#9070e8'}
+                    lineColor={'#AD956E'}
                     lineWidth={"2px"}
                     lineBorderRadius={"10px"}
                     label={
                         <Box align="center">
-                            <PersonCard person={person} history={this.props.history}/>
+                            <PersonCard person={person} history={this.props.history} Phado={true} partner={person.partner}/>
                         </Box>
                     }
 
