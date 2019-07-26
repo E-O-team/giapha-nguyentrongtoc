@@ -46,7 +46,7 @@ class PeopleOrSearch extends React.Component {
 
         var config = {
             method: "get",
-            url: 'http://localhost:3000/api/search?name=' + this.state.search,
+            url: 'https://giaphaphamphu-react-redux.herokuapp.com/api/search?name=' + this.state.search,
             timeout: 60000
         }
 

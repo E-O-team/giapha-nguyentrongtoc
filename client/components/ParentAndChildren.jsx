@@ -14,7 +14,7 @@ class ParentAndChildren extends PureComponent {
     }
 
     getChildren = () => {
-        axios.get("http://giaphaphamphu-react-redux.herokuapp.com/api/person/" + this.props.initPerson._id)
+        axios.get("https://giaphaphamphu-react-redux.herokuapp.com/api/person/" + this.props.initPerson._id)
         .then(res => this.setState({
             loading: false,
             person: res.data.person

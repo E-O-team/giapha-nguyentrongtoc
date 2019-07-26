@@ -7,7 +7,7 @@ export const GET_PERSON = 'GET_PERSON';
 export const CHOOSE_PERSON = 'CHOOSE_PERSON';
 export const GET_CHILDREN = 'GET_CHILDREN';
 export const SET_ALL_PAGE = 'SET_ALL_PAGE'
-const domain = 'http://giaphaphamphu-react-redux.herokuapp.com/api/'
+const domain = 'https://giaphaphamphu-react-redux.herokuapp.com/api/'
 
 // export const getChilldrenData = (url) => {
 //     return (dispatch) => {

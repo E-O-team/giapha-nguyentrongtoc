@@ -28,7 +28,7 @@ const getPerson = (state = {}, action) => {
 
 }
 
-const domain = (state = 'http://giaphaphamphu-react-redux.herokuapp.com/api/', {}) => {
+const domain = (state = 'https://giaphaphamphu-react-redux.herokuapp.com/api/', {}) => {
     return state
 }
 
