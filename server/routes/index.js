@@ -1,6 +1,7 @@
 // We will need to require Keystone first
 var keystone = require('keystone');
 var cors = require('cors')
+var enforce = require('express-sslify');
 // Then to get access to our API route we will use importer
 var importRoutes = keystone.importer(__dirname);
 // And finally set up the api on a route
@@ -11,7 +12,7 @@ var routes = {
 // Export our app routes
 exports = module.exports = function (app) {
 	app.use(cors())
-
+	app.use(enforce.HTTPS({ trustProtoHeader: true }))
 	// Get access to the API route in our app
     // console.log(routes.api);
 	app.get('/api/people/', keystone.middleware.api, routes.api.person.list);
