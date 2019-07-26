@@ -87,15 +87,9 @@ class Person extends Component {
                 pad={{
                     bottom: "10px"
                 }}
-                style={{
-                    backgroundImage: `url(${Background})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: '150% 120%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundAttachment: 'fixed',
-                }}
+                wrap={true}
                 fill="horizontal"
-                background='brand'
+
             >
                 <Box
                     direction="row"
@@ -117,10 +111,12 @@ class Person extends Component {
                         <Box className='personDetail'>
                             <p>Họ và tên: <b>{person.fullName}</b></p>
                             <p>Giới tính: <b>{person.sex}</b></p>
-                            <p>Ngày sinh: <b>{dateFormat(person.birth, 'dd-mm-yyyy')}</b></p>
+                            <p>Ngày sinh: <b>{person.birth}</b></p>
                             <p>Đời: <b>{person.generation}</b></p>
                             {person.parent && <Box key={person.parent._id}><p key={person.parent._id}>Con ông: <b style={{'backgroundColor' : '#fc746c', 'cursor': 'pointer'}} onClick={() => this.handleChoosedPerson(this.props.person.parent)}>{this.props.person.parent.fullName}</b></p></Box>}
                             {person.partner && <Box key={person.partner._id}><p>Hôn nhân: <b style={{'backgroundColor' : '#fc746c', 'cursor': 'pointer'}} onClick={() => this.handleChoosedPerson(this.props.person.partner)}>{this.props.person.partner.fullName}</b></p></Box>}
+                            <p>Thông tin: </p>
+                            <div dangerouslySetInnerHTML={{ __html: person.information }} />
                         </Box>
                     </Box>
                 </Box>

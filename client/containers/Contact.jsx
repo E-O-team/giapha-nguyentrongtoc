@@ -4,7 +4,7 @@ class Contact extends Component {
 
     render() {
         return (
-            <Box direction='row' pad='medium'>
+            <Box direction='row' pad='medium' height='100vh'>
                 <h1>contact</h1>
             </Box>
         );

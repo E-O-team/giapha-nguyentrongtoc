@@ -15,8 +15,9 @@ exports = module.exports = function (app) {
 	// Get access to the API route in our app
     // console.log(routes.api);
 	app.get('/api/people/', keystone.middleware.api, routes.api.person.list);
-	app.get('/api/person/:id', keystone.middleware.api, routes.api.person.getPerson)
-	app.get('/api/person/children/:id', keystone.middleware.api, routes.api.person.getChildren)
+	app.get('/api/search/', keystone.middleware.api, routes.api.person.search);
+	app.get('/api/person/:id', keystone.middleware.api, routes.api.person.getPerson);
+	app.get('/api/person/children/:id', keystone.middleware.api, routes.api.person.getChildren);
 	app.get('/', function (req, res) {
 		// Render some simple boilerplate html
 		function renderFullPage () {

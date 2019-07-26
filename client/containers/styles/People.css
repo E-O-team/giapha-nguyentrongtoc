@@ -6,10 +6,17 @@
 
 .personBox{
     overflow: auto;
-    width: 80px;
-    height: 130px;
+    width: 88px;
+    height: 143px;
     cursor: pointer;
 
+}
+
+.treeContainer{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .clickableWithHover Box:hover{
@@ -37,9 +44,9 @@
 }
 
 .coupleBox{
-    overflow: auto;
-    width: 190px;
-    height: 130px;
+    overflow: hidden;
+    width: 209px;
+    height: 143px;
     cursor: pointer;
 
 }
@@ -51,14 +58,58 @@
     height: auto;
 }
 
+.paginateBox p{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.paginateBox{
+    cursor: pointer;
+    background-color: #BB925E;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginateBox:hover{
+    background-color: #f79a94;
+}
+
+.activePage{
+    background-color: #fc746c;
+}
+
+.paginateForAndBackward{
+    cursor: pointer;
+    background-color: #BB925E;
+    width: 110px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginateForAndBackward:hover{
+    background-color: #f79a94;
+}
+
+.paginateForAndBackward p{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+/* Cỡ điện thoại */
 @media only screen and (max-width:767px) {
+    /* PersonCard */
     .personBoxImage{
-        width: 30px;
-        height: 40px;
+        width: 45px;
+        height: 60px;
         margin: 0px;
     }
     .personBox p{
-        font-size: 4.6px;
+        font-size: 8px;
         margin: 0px;
         padding: 0px;
         margin-top: 2px;
@@ -68,19 +119,69 @@
     }
     .personBox{
         margin: 0px;
-        width: 45px;
-        height: 60px;
+        width: 67.5px;
+        height: 95px;
     }
+    .coupleBox{
+        margin: 0px;
+        overflow: hidden;
+        height: 95px;
+        width: 135px;
+        cursor: pointer;
+
+    }
+    .personDetail b,p{
+        margin: 0px;
+        line-height: 24px;
+    }
+
+
+    /* Person Detail */
     .personDetail b,p{
         font-size: 17px;
         margin: 5px;
     }
-    .coupleBox{
-        margin: 0px;
-        overflow: auto;
-        width: 90px;
-        height: 60px;
-        cursor: pointer;
 
+
+
+    /* pagination */
+    .paginateBox p{
+        font-size: 8px;
+        font-weight: bold;
+    }
+
+    .paginateBox{
+        cursor: pointer;
+        background-color: #BB925E;
+        width: 15px;
+        height: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .paginateBox:hover{
+        background-color: #f79a94;
+    }
+
+    .activePage{
+        background-color: #fc746c;
+    }
+
+    .paginateForAndBackward{
+        cursor: pointer;
+        background-color: #BB925E;
+        width: 55px;
+        height: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .paginateForAndBackward:hover{
+        background-color: #f79a94;
+    }
+
+    .paginateForAndBackward p{
+        font-size: 8px;
+        font-weight: bold;
     }
 }

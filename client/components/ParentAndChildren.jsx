@@ -14,7 +14,7 @@ class ParentAndChildren extends PureComponent {
     }
 
     getChildren = () => {
-        axios.get("http://192.168.0.117:3000/api/person/" + this.props.initPerson._id)
+        axios.get("http://localhost:3000/api/person/" + this.props.initPerson._id)
         .then(res => this.setState({
             loading: false,
             person: res.data.person
@@ -42,27 +42,11 @@ class ParentAndChildren extends PureComponent {
 
         if(this.state.loading){
             return (
-                <Box>
-                    <h3>đang tải...</h3>
+                <Box align='center'>
+                    <h2>đang tải...</h2>
                 </Box>
             );
         }else{
-            // return(
-            //     <Box
-            //         align="center"
-            //     >
-            //         {tree.map((person, i) => {
-            //             return(
-            //                 <Box key={`level-${level}-${i}`}>
-            //                     <PersonCard key={person._id} person={person} history={this.props.history}/>
-            //                     {person.children.length > 0 && <ParentAndChildren initPerson={person.children} level={level+1} index={i}/>}
-            //                 </Box>
-            //             )
-            //         })}
-            //     </Box>
-            // )
-
-
             if(person.children.length > 0){
                 return(
                     <Box direction="row" justify="center">
@@ -89,53 +73,8 @@ class ParentAndChildren extends PureComponent {
             }else{
                 return null
             }
-
-
-
-
-            // return(
-            //     <div>
-            //         {person.children.length > 0 &&
-            //             <Box direction="row" justify="center">
-            //                 {person.children.map((child, i) => {
-            //                     if(!child.children.length > 0){
-            //                         console.log(child.fullName);
-            //                     }
-            //                     return(
-            //                         <TreeNode
-            //                             key={child._id}
-            //                             label={
-            //                                 <Box align="center">
-            //                                     <PersonCard className={child._id} key={child._id} person={child} history={this.props.history}/>
-            //                                 </Box>
-            //                             }
-            //                         >
-            //                             <RenderChild child={child}/>
-            //                         </TreeNode>
-            //                     )
-            //                 })}
-            //             </Box>
-            //         }
-            //     </div>
-            // )
         }
     }
 
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         person: state.person,
-//         loading: state.loading
-//     };
-// }
-//
-// // anything returned from here will end up in the props
-// const mapDispatchToProps = dispatch => ({
-//     // Our thunk will be mapped to this.props.fetchRecipe
-//     loading: (status) => dispatch(loading)
-//     fetchPersonData: (url) => dispatch(fetchPersonData(url)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(PhaDo);
 export default ParentAndChildren;

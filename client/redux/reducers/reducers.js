@@ -1,4 +1,4 @@
-import {LOADING, GET_PEOPLE, GET_PERSON, CHOOSE_PERSON} from '../actions/actions';
+import {LOADING, GET_PEOPLE, GET_PERSON, CHOOSE_PERSON, SET_ALL_PAGE} from '../actions/actions';
 import { combineReducers } from 'redux';
 
 const getPeople = (state = [], action) => {
@@ -28,12 +28,21 @@ const getPerson = (state = {}, action) => {
 
 }
 
-const domain = (state = 'http://192.168.0.117:3000/api/', {}) => {
+const domain = (state = 'http://localhost:3000/api/', {}) => {
     return state
+}
+
+const allPage = (state = 1, action) => {
+    switch (action.type) {
+        case SET_ALL_PAGE:
+            return action.payload
+    }
+    return state;
 }
 
 
 const reducers = combineReducers({
+    allPage: allPage,
     domain: domain,
     person: getPerson,
     people: getPeople,

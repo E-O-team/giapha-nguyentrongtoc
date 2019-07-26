@@ -6,7 +6,8 @@ export const GET_PEOPLE = 'GET_PEOPLE';
 export const GET_PERSON = 'GET_PERSON';
 export const CHOOSE_PERSON = 'CHOOSE_PERSON';
 export const GET_CHILDREN = 'GET_CHILDREN';
-const domain = 'http://192.168.0.117:3000/api/'
+export const SET_ALL_PAGE = 'SET_ALL_PAGE'
+const domain = 'http://localhost:3000/api/'
 
 // export const getChilldrenData = (url) => {
 //     return (dispatch) => {
@@ -24,6 +25,12 @@ const domain = 'http://192.168.0.117:3000/api/'
 //     }
 // }
 
+export const setAllPage = (page) => {
+    return{
+        type: SET_ALL_PAGE,
+        payload: page
+    }
+}
 
 export const choosePerson = (person) => {
     return (dispatch) => {
@@ -69,11 +76,12 @@ export function fetchPersonData(url) {
 }
 
 // This is a redux thunk that will fetch our model data
-export function peopleFetchData(url) {
+export function peopleFetchData(page) {
     return (dispatch) => {
-        const request = axios.get(domain + 'people');
+        const request = axios.get(domain + 'people/?page=' + page);
         request.then((response) => {
-            dispatch(fetchPeople(response.data.people));
+            dispatch(fetchPeople(response.data.docs));
+            dispatch(setAllPage(response.data.pages));
             dispatch(loading(false));
         });
     };

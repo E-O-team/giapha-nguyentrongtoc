@@ -16,7 +16,9 @@ class PersonCard extends React.PureComponent {
         this.state={
             partner: {}
         }
-        this.checkPartner()
+        if(this.props.location.pathname !== '/people'){
+            this.checkPartner()
+        }
     }
 
     checkPartner = () => {
@@ -122,4 +124,4 @@ const mapDispatchToProps = dispatch => ({
     choosePerson: (person) => dispatch(choosePerson(person))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonCard);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PersonCard));

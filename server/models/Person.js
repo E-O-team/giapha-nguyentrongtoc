@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-
-
+const mongoosePaginate = require('mongoose-paginate');
+var mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
 
 var Person = new keystone.List('Person', {
     map: { name: 'fullName' },
@@ -11,11 +11,10 @@ var Person = new keystone.List('Person', {
 Person.add({
     fullName: { type: String, initial:true, required: true,label: 'Họ và tên', index:true,  },
     sex: { type: Types.Select, options: 'nam, nữ', label: "Giới tính" },
-    birth: {type: Types.Date, inputFormat: "DD-MM-YYYY", format: "DD-MM-YYYY", label: 'Ngày sinh', todayButton: false},
-    death: {type: Types.Date, inputFormat: "DD-MM-YYYY", format: "DD-MM-YYYY", label: 'Ngày mất', todayButton: false},
+    birth: {type: String, label: 'Ngày sinh'},
+    death: {type: String, label: 'Ngày mất'},
     generation: {type: Types.Number, label: 'Đời'},
     partner: {type: Types.Relationship, ref: 'Person', label: "Hôn Nhân"},
-    marriageStatus: {type: String, label: 'Tình Trạng Hôn Nhân' },
     parent: {type: Types.Relationship, ref:'Person', label: 'Cha'},
     children: {type: Types.Relationship, ref:'Person', label: 'Con', many: true},
     information: { type: Types.Html, wysiwyg: true, height: 150, label: "Thông tin" },
@@ -26,10 +25,8 @@ Person.add({
 
 // console.log(Person.schema.post);
 
-const setChildren = () => {
-
-}
-
+Person.schema.plugin(mongoosePaginate);
+Person.schema.plugin(mongoose_fuzzy_searching, {fields: ['fullName']});
 
 Person.schema.post('save', function(doc, next) {
     // console.log(this);

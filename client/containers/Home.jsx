@@ -9,8 +9,8 @@ class Home extends Component {
     render() {
 
             return(
-                <Box>
-                    <h1>hi</h1>
+                <Box height='100vh'>
+                    <h1>hi578p7807890</h1>
                 </Box>
             )
 
