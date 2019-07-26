@@ -9,7 +9,7 @@
         "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
         "client": "webpack --watch",
         "server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
-        "dev": "nodemon index.js",
+        "dev": "node index.js",
         "devNoWatch": "node index.js",
         "onlyClient": "webpack-dev-server",
         "clientDev": "npm-run-all --parallel devNoWatch client",
