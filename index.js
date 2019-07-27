@@ -18,7 +18,7 @@ keystone.init({
   'auto update': true,
   'cloudinary config': 'cloudinary://915351483667299:9im4e4B0Xd0060utUk82TN41s14@giaphatocphamphu',
   // The url for your MongoDB connection
-  'mongo': 'mongodb://NeoTheSecond1404:123456zz@ds133291.mlab.com:33291/giaphaphamphu',
+  'mongo': 'mongodb://NeoTheSecond1404:123456zz@ds355837-a0.mlab.com:55837,ds355837-a1.mlab.com:55837/giaphaphamphu?replicaSet=rs-ds355837',
   // Whether to enable built-in authentication for Keystone's Admin UI,
   'auth': true,
   // The key of the Keystone List for users, required if auth is set to true
