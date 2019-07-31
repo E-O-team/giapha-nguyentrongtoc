@@ -81,9 +81,9 @@ class People extends Component {
                     label={"Trang " + this.state.page}
                     dropAlign={{ top: 'bottom', right: 'right' }}
                     dropContent={
-                        <Box pad="xsmall" gap='xsmall' background="brand">
+                        <Box gap='xsmall' pad='xsmall' height='30vh' direction='column' justify='start'>
                             {allPages.map((page, i) => {
-                                return <Button color='brand_2' onClick={() => this.handlePageClick(i+1)} key={i+1} label={`Trang ${i+1}`}/>
+                                return <Button  color='brand_2' onClick={() => this.handlePageClick(i+1)} key={i+1} label={`Trang ${i+1}`}/>
                             })}
                         </Box>
                     }

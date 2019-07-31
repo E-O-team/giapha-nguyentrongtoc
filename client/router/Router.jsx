@@ -26,6 +26,7 @@ const theme = {
             text:{
                 dark: 'black',
             },
+            link: '#fc746c',
             border: '#e1e1dd',
         },
         font: {
@@ -113,6 +114,8 @@ export default class AppRouter extends React.Component{
     shouldComponentUpdate(nextProps, nextState) {
         if(this.state.search !== nextState.search){
             return false
+        }else{
+            return true
         }
     }
 

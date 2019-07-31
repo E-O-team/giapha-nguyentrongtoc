@@ -102,10 +102,10 @@ class Person extends Component {
                     wrap={true}
                     key={person._id}
                 >
-                    <Box style={{flex: '1 1 300px'}} align="center" border={{size: 'large', color:'brand_2', side:'all'}} >
+                    <Box elevation='large' style={{flex: '1 1 300px'}} align="center" border={{size: 'large', color:'brand_2', side:'all'}} >
                         <RenderImage person={person}/>
                     </Box>
-                    <Box background="brand_2" style={{flex: '1 1 300px'}} pad='medium'>
+                    <Box elevation='large' background="brand_2" style={{flex: '1 1 300px'}} pad='medium'>
                         <Heading>{person.fullName}</Heading>
                         <Box height='3px' background='black' flex={{grow:1}}></Box>
                         <Box className='personDetail'>

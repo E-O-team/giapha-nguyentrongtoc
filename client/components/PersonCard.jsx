@@ -74,6 +74,7 @@ class PersonCard extends React.PureComponent {
                     }}
                     pad={{vertical: "5px"}}
                     direction='row'
+                    elevation='large'
                 >
                     <Box align='center' justify='center' className="personBox" >
                         <RenderImage person={person}/>
@@ -92,7 +93,7 @@ class PersonCard extends React.PureComponent {
                     key={person._id}
                     align="center"
                     onClick={this.handleChoosedPerson}
-
+                    elevation='large'
                     border={{
                         color: 'blend',
                         size: 'small',

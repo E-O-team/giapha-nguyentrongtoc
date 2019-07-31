@@ -31,6 +31,8 @@ exports = module.exports = function (app) {
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
 				/>
+				<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+				<link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/giaphatocphamphu/image/upload/v1564567954/favicon.png"/>
 				<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 				<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 				<title>Gia Phả Phạm Phú</title>
