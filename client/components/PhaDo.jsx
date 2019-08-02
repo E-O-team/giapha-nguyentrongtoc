@@ -65,7 +65,7 @@ class PhaDo extends PureComponent {
                 />
             </Box>
             <Box
-                align='center'
+                align='start'
                 key={person._id}
                 className='treeContainer'
                 overflow={{

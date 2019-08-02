@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Anchor, Grid, DropButton, Button, Heading} from 'grommet';
+import { Box, Anchor, Grid, DropButton, Button, Heading, ThemeContext, Select} from 'grommet';
 import { connect } from 'react-redux';
 import Img from 'react-image'
 import './styles/People.css';
@@ -13,12 +13,13 @@ class People extends Component {
     constructor(props){
         super(props)
         this.state={
-            page: 1,
+            page: 'Trang thứ 1',
         }
     }
 
     componentDidMount() {
-        this.props.fetchPeople(this.state.page)
+        const {page} = this.state
+        this.props.fetchPeople(page.substr(page.length - 1))
     }
 
     nextPage = () => {
@@ -34,7 +35,7 @@ class People extends Component {
     handlePageClick = page => {
         this.setState({
             page: page,
-        }, () => this.props.fetchPeople(this.state.page))
+        }, () => this.props.fetchPeople(this.state.page.substr(this.state.page.length - 1)))
     };
 
     handleForwardClick = () => {
@@ -54,10 +55,11 @@ class People extends Component {
     }
 
     createTotalPageArray = () => {
-        var totalPageArray = []
-        for(var i=0; i<this.props.allPages; i++){
-            totalPageArray.push(i+1)
-        }
+        // var totalPageArray = []
+        // for(var i=0; i<this.props.allPages; i++){
+        //     totalPageArray.push(i+1)
+        // }
+        var totalPageArray = Array.from(Array(this.props.allPages).keys()).map(el => `Trang thứ ${el+1}`)
         return totalPageArray
     }
 
@@ -75,20 +77,57 @@ class People extends Component {
         const Pagination = ({currentPage, totalPage}) => {
             var allPages = this.createTotalPageArray()
             return(
-                <DropButton
-                    margin='small'
-                    color='brand_2'
-                    label={"Trang " + this.state.page}
-                    dropAlign={{ top: 'bottom', right: 'right' }}
-                    dropContent={
-                        <Box gap='xsmall' pad='xsmall' height='30vh' direction='column' justify='start'>
-                            {allPages.map((page, i) => {
-                                return <Button  color='brand_2' onClick={() => this.handlePageClick(i+1)} key={i+1} label={`Trang ${i+1}`}/>
-                            })}
-                        </Box>
-                    }
-                />
+                <ThemeContext.Extend
+                    value={{
+                        select:{
+                            background: 'brand_2',
+                        }
+                    }}
+                >
+                    <Select
+                        size='small'
+                        dropHeight='small'
+                        options={allPages}
+                        value={this.state.page}
+                        onChange={({ option }) => this.handlePageClick(option)}
+                    />
+                </ThemeContext.Extend>
             )
+
+
+
+            // <DropButton
+            //
+            //     color='brand_2'
+            //     label={"Trang " + this.state.page}
+            //     dropAlign={{ top: 'bottom', right: 'right' }}
+            //     dropContent={
+            //         <Box gap='xsmall' pad='xsmall' height='300px' justify='start' align='center' overflow="scroll">
+            //             {allPages.map((page, i) => {
+            //                 return(
+            //                     <ThemeContext.Extend
+            //                         value={{
+            //                             button: {
+            //                                 extend:{
+            //                                     overflow: 'visible',
+            //                                     height: '300px'
+            //                                 }
+            //                             }
+            //                         }}
+            //                     >
+            //                         <Button type='button' color='brand_2' margin='2px' onClick={() => this.handlePageClick(i+1)} key={i+1} label={`Trang ${i+1}`}/>
+            //
+            //                     </ThemeContext.Extend>
+            //                 )
+            //             })}
+            //         </Box>
+            //     }
+            // />
+
+
+
+
+
             // return(
             //     <Box direction='row' align='center' gap='5px' margin={{top: '20px'}}>
             //         <Box className='paginateForAndBackward' onClick={this.handleBackwardClick}><p>Trang trước</p></Box>
@@ -118,7 +157,8 @@ class People extends Component {
         }
 
         return(
-            <Box>
+            <Box gap='medium' pad='medium'>
+                <Box align='end'><Pagination currentPage={this.state.page} totalPage={this.props.allPages}/></Box>
                 <Grid
                     columns={['20%', '20%', '20%', '20%']}
                     justifyContent='center'
@@ -137,7 +177,6 @@ class People extends Component {
                         </Box>
                     ))}
                 </Grid>
-                <Box align='end'><Pagination currentPage={this.state.page} totalPage={this.props.allPages}/></Box>
             </Box>
         )
 
