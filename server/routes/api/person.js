@@ -12,6 +12,7 @@ exports.list = function (req, res) {
 		page: req.query.page || 1,
 		limit: 20,
 		lean: true,
+		sort: {generation: 'desc'}
 	};
 	Person.model.paginate({},options, (err, item) => {
 		if(err) return res.apiError('database error', err);
