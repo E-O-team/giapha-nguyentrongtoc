@@ -28,7 +28,7 @@ class Person extends Component {
     constructor(props) {
         super(props);
         this.state={
-            person: this.props.person,
+            person: {},
             father: {},
             partner: {},
         }
@@ -36,6 +36,24 @@ class Person extends Component {
 
     // Fetch recipes when component is mounted
     componentDidMount() {
+        function isEmpty(obj) {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                return false;
+            }
+            return true;
+        }
+        if(isEmpty(this.props.person)){
+            this.props.fetchPerson(this.props.domain + "person/" + this.props.match.params.id)
+            // axios.get(this.props.domain + "person/" + this.props.match.params.id)
+            // .then(res => {
+            //     console.log(res.data);
+            //     this.props.choosePerson(res.data)
+            //     // this.props.choosePerson(res.data)
+            //     // this.handleChoosedPerson(res.data)
+            // })
+            // .catch(err => console.log(err))
+        }
         // const API_URL = this.props.domain + 'person/' + this.props.person._id;
         // this.props.fetchPerson(API_URL)
         // this.fetchFather()

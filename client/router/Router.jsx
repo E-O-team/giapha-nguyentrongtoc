@@ -1,5 +1,5 @@
 import React, {useEffect, createRef} from 'react';
-import { Route, Link, BrowserRouter as Router, Redirect, withRouter } from 'react-router-dom'
+import { Route, Link, HashRouter as Router, Redirect, withRouter } from 'react-router-dom'
 import { Box, Button, Heading, Grommet, Text, Image, ResponsiveContext, Form, FormField, TextInput, Drop } from 'grommet';
 import { Search } from 'grommet-icons';
 import Home from '../containers/Home';
