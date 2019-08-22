@@ -11,8 +11,9 @@ var routes = {
 
 // Export our app routes
 exports = module.exports = function (app) {
-	app.use(cors())
 	app.use(enforce.HTTPS({ trustProtoHeader: true }))
+	app.use(cors())
+
 	// Get access to the API route in our app
     // console.log(routes.api);
 	app.get('/api/people/', keystone.middleware.api, routes.api.person.list);
