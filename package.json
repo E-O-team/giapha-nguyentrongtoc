@@ -37,7 +37,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node keystone.js",
+    "start": "NODE_ENV='production' node keystone.js",
     "pro": "NODE_ENV='production' node keystone.js",
     "build": "next build"
   }
