@@ -9,7 +9,7 @@ class HeaderNavigation extends Component {
                         <div className="themeix-logo">
 
                                 <a className="themeix-brand" href="/">
-                                    <img src="/static/common/images/header-brand-1.png" alt="header brand" />
+                                    <h3 style={{color: "#2EA1B1", textDecoration: "underline"}}>Nguyễn Trọng Tộc</h3>
                                 </a>
 
                         </div>
@@ -29,10 +29,10 @@ class HeaderNavigation extends Component {
                                         <li><Link href="/products"><a>Vay theo lương</a></Link></li>
                                     </ul>
                                 </li>*/}
-                                <li><Link href="/chi_1"><a>Chi 1</a></Link></li>
-                                <li><Link href="/chi_2"><a>Chi 2</a></Link></li>
-                                <li><Link href="/chi_3"><a>Chi 3</a></Link></li>
-                                <li><Link href="/chi_4"><a>Chi 4</a></Link></li>
+                                <li><Link href="/chi?branch=1"><a>Chi 1</a></Link></li>
+                                <li><Link href="/chi?branch=2"><a>Chi 2</a></Link></li>
+                                <li><Link href="/chi?branch=3"><a>Chi 3</a></Link></li>
+                                <li><Link href="/chi?branch=4"><a>Chi 4</a></Link></li>
                                 <li><Link href="/contact"><a>Liên Hệ</a></Link></li>
                             </ul>
                         </nav>

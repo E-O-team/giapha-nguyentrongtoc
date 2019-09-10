@@ -11,7 +11,7 @@ import {
 class ServicesSection extends Component {
     render() {
         return (
-            <section className="services-section bg-color3 section-spacing">
+            <section style={{paddingBottom: "20px"}} className="services-section bg-color3 section-spacing">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-10 m-auto">

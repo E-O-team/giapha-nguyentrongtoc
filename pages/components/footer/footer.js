@@ -61,7 +61,7 @@ export default class Footer extends Component {
                 </div>*/}
                 <div className="footer-intro-container bg-color5">
                     <div className="container">
-                        <p>&copy; Copyright - 2020 24hvay - Designed by  <a href="https://www.facebook.com/man.phamquang.71/">Phạm Quang Mẫn</a> </p>
+                        <p>Designed by  <a href="https://www.facebook.com/man.phamquang.71/">Phạm Quang Mẫn</a> </p>
                     </div>
                 </div>
             </footer>

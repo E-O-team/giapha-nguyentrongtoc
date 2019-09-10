@@ -34,11 +34,6 @@ class HeaderTop extends Component {
                                 <span>{date}</span>
                             </p>
                         </div>
-                        <div className="themeix-top-bar-right">
-                            <p className="top-content">
-                                <span>Hotline tư vấn miễn phí: 0906.42.59.42</span>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
