@@ -5,13 +5,21 @@ exports = module.exports = nextApp => keystoneApp => {
 
 	// Next request handler
 	const handle = nextApp.getRequestHandler();
-	// lấy các bài person
+	// lấy các person
 	keystoneApp.get('/api/people', (req, res, next) => {
 		const Person = keystone.list('Person');
 		Person.model.find()
 		.populate('children parent partner')
 		.limit(Number(req.query.limit))
 		.exec((err, results) => {
+			if (err) throw err;
+			res.json(results);
+		})
+	});
+
+	keystoneApp.get('/api/children/:id', (req, res, next) => {
+		const Person = keystone.list('Person');
+		Person.model.find().where("parent", req.params.id).exec((err, results) => {
 			if (err) throw err;
 			res.json(results);
 		})

@@ -10,22 +10,46 @@ import {
 import './chi_style.less';
 import axios from 'axios';
 import Link                 from 'next/link';
-import './personCard_style.less'
+
+import PersonCard from './components/PersonCard';
 export default class App extends Component {
 
-    static async getInitialProps({query ,req }) {
+    static async getInitialProps({ query ,req }) {
         const res = await axios({
-            url: '/api/branch/' + query.branch || 1,
+            url: '/api/branch/' + query.branch,
             method: 'GET',
         });
         return {
             people: res.data,
             branch: query.branch
         };
+        // if(req){
+        //     const res = await axios({
+        //         url: '/api/branch/' + query.branch || 1,
+        //         method: 'GET',
+        //     });
+        //     return {
+        //         people: res.data,
+        //         branch: query.branch
+        //     };
+        // }else{
+        //     axios.get('/api/branch/' + query.branch)
+        //     .then(res => { return {branch: query.branch, people: res.data}})
+        //     .catch(err => console.log(err))
+        //
+        // }
     }
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         people: []
+    //     }
+    // }
 
     render() {
         const { branch } = this.props
+        const people = this.props.people
         return(
             <div>
                 <Head>
@@ -50,16 +74,8 @@ export default class App extends Component {
                                 </div>
                                 <div className="member-container">
                                     {this.props.people.map((person, i) => {
-                                        const { fullName, slug } = person
                                         return(
-                                            <Link key={i} href="/person/[slug]" as={`/person/${slug}`}><a>
-                                                <div className="hover-efect testimonial-text text-center feature-box">
-                                                    <div className="testimonial-author-meta">
-                                                        <FaUserAlt className="more-info-icon" />
-                                                        <h5>{fullName}</h5>
-                                                    </div>
-                                                </div>
-                                            </a></Link>
+                                            <PersonCard person={person} key={i}/>
                                         )
                                     })}
                                 </div>
