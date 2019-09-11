@@ -7,16 +7,15 @@ import {
     FaUserAlt,
     FaRegAddressCard,
     FaPassport }        from 'react-icons/fa';
-import './chi_style.less'
+import './chi_style.less';
 import axios from 'axios';
-import PersonCard from './components/personCard';
-const data=['trung', 'tuấn', 'hùng', 'dũng', 'mẫn', 'nga', 'hà', 'hải', 'kiên', 'thành', 'tiến', 'khải', 'toàn', 'thủy', 'trang', 'ngân']
-
+import Link                 from 'next/link';
+import './personCard_style.less'
 export default class App extends Component {
 
     static async getInitialProps({query ,req }) {
         const res = await axios({
-            url: '/api/branch/' + query.branch,
+            url: '/api/branch/' + query.branch || 1,
             method: 'GET',
         });
         return {
@@ -26,7 +25,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { people, branch } = this.props
+        const { branch } = this.props
         return(
             <div>
                 <Head>
@@ -50,9 +49,17 @@ export default class App extends Component {
                                     </div>
                                 </div>
                                 <div className="member-container">
-                                    {people.map((person, i) => {
+                                    {this.props.people.map((person, i) => {
+                                        const { fullName, slug } = person
                                         return(
-                                            <PersonCard key={i} person={person}/>
+                                            <Link key={i} href="/person/[slug]" as={`/person/${slug}`}><a>
+                                                <div className="hover-efect testimonial-text text-center feature-box">
+                                                    <div className="testimonial-author-meta">
+                                                        <FaUserAlt className="more-info-icon" />
+                                                        <h5>{fullName}</h5>
+                                                    </div>
+                                                </div>
+                                            </a></Link>
                                         )
                                     })}
                                 </div>
@@ -62,71 +69,5 @@ export default class App extends Component {
                 </section>
             </div>
         )
-
-
-
-
-        // return(
-        //     <div>
-        //         <Head>
-        //             <title>Nguyễn Trọng Tộc || Chi 1</title>
-        //         </Head>
-        //         <section
-        //             className="about-section section-spacing bg-color1 wow fadeIn"
-        //             data-wow-duration="1s"
-        //         >
-        //             <div className="container" style={{paddingBottom: "25px"}}>
-        //                 <div className="row">
-        //                     <div className="col-md-12">
-        //                         <div className="row">
-        //                             <div className="col-md-10 m-auto">
-                                        // <div className="section-title text-center margin-bottom-60">
-                                        //     <h4>
-                                        //         Một số thành viên trong chi 1
-                                        //     </h4>
-                                        //     <h5>giới thiệu về chi ... giới thiệu về chi ... giới thiệu về chi ...</h5>
-                                        // </div>
-        //                             </div>
-        //                         </div>
-        //                         <div className="row">
-        //                             <div className="col-md-6 col-lg-3">
-                                        // <div className="testimonial-text text-center feature-box">
-                                        //     <div className="testimonial-author-meta">
-                                        //         <FaUserAlt className="more-info-icon" />
-                                        //         <h5>Thành viên 1</h5>
-                                        //     </div>
-                                        // </div>
-        //                             </div>
-        //                             <div className="col-md-6 col-lg-3">
-        //                                 <div className="testimonial-text text-center feature-box">
-        //                                     <div className="testimonial-author-meta">
-        //                                         <FaUserAlt className="more-info-icon" />
-        //                                         <h5>Thành viên 2</h5>
-        //                                     </div>
-        //                                 </div>
-        //                             </div>
-        //                             <div className="col-md-6 col-lg-3">
-        //                                 <div className="testimonial-text text-center feature-box">
-        //                                     <div className="testimonial-author-meta">
-        //                                         <FaUserAlt className="more-info-icon" />
-        //                                         <h5>Thành viên 3</h5>
-        //                                     </div>
-        //                                 </div>
-        //                             </div>
-        //                             <div className="col-md-6 col-lg-3">
-        //                                 <div className="testimonial-text text-center feature-box">
-        //                                     <div className="testimonial-author-meta">
-        //                                         <FaUserAlt className="more-info-icon" />
-        //                                         <h5>Thành viên 4</h5>
-        //                                     </div>
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </section>
-        //     </div>
-        // )
     };
 }

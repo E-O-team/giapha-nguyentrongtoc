@@ -4,7 +4,6 @@ import ServicesSection          from './components/section/services/servicesSect
 import FeatureSection           from './components/section/feature/featureSection.js';
 import RequestAdviceSection     from './components/section/requestAdvice/requestAdviceSection.js';
 import WhyChooseUsSection       from './components/section/whyChooseUs/whyChooseUsSection.js';
-import Calculator               from './components/section/calculator/calculator-container';
 import MethodSection            from './components/section/method/methodSection';
 import Head                     from 'next/head';
 

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Header               from './header/header.js';
 import Footer               from './footer/footer';
 import { withRouter }       from 'next/router';
-import SideBar              from './sidebar/sidebar';
 
 class Layout extends Component {
     render() {
@@ -13,20 +12,6 @@ class Layout extends Component {
                     {children}
                 </div>
             )
-            // if(route == '/'){
-                // return(
-                //     <div className='layout'>
-                //         {children}
-                //     </div>
-                // )
-            // }else{
-            //     // render thêm sidebar nếu không phải trang home
-            //     return(
-            //         <div className="layout">
-            //             <SideBar children={children}/>
-            //         </div>
-            //     )
-            // }
         }
         const { children } = this.props;
         return(
