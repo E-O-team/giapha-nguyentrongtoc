@@ -16,7 +16,7 @@ export default class Chi5 extends Component {
 
     static async getInitialProps({ query ,req }) {
         const res = await axios({
-            url: 'http://localhost:3000/api/branch/1',
+            url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/1',
             method: 'GET',
         });
         return {

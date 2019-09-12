@@ -31,7 +31,7 @@ const RenderImage = ({person}) => {
 class Person extends Component {
     static async getInitialProps({req, query}) {
         const res = await axios({
-            url: 'http://localhost:3000/api/person/' + query.slug,
+            url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/person/' + query.slug,
             method: 'GET',
         });
         return {
