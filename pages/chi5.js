@@ -12,11 +12,11 @@ import axios from 'axios';
 import Link                 from 'next/link';
 
 import PersonCard from './components/PersonCard';
-export default class Chi extends Component {
+export default class Chi5 extends Component {
 
     static async getInitialProps({ query ,req }) {
         const res = await axios({
-            url: 'http://localhost:3000/api/branch/' + query.branch,
+            url: 'http://localhost:3000/api/branch/1',
             method: 'GET',
         });
         return {
