@@ -17,6 +17,7 @@ exports = module.exports = nextApp => keystoneApp => {
 		})
 	});
 
+	// lấy con cái
 	keystoneApp.get('/api/children/:id', (req, res, next) => {
 		const Person = keystone.list('Person');
 		Person.model.find().where("parent", req.params.id).exec((err, results) => {
@@ -29,6 +30,17 @@ exports = module.exports = nextApp => keystoneApp => {
 		const Person = keystone.list('Person');
 		Person.model
 		.findOne({slug: req.params.slug})
+		.populate('children parent partner')
+		.exec(function (err, results) {
+			if (err) throw err;
+			res.json(results);
+		});
+	});
+
+	keystoneApp.get('/api/person-id/:id', (req, res, next) => {
+		const Person = keystone.list('Person');
+		Person.model
+		.findById(req.params.id)
 		.populate('children parent partner')
 		.exec(function (err, results) {
 			if (err) throw err;

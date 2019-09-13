@@ -33,7 +33,6 @@ class HeaderNavigation extends Component {
                                 <li><Link href="/chi?branch=2"><a>Chi 2</a></Link></li>
                                 <li><Link href="/chi?branch=3"><a>Chi 3</a></Link></li>
                                 <li><Link href="/chi?branch=4"><a>Chi 4</a></Link></li>
-                                <li><Link href="/chi5"><a>Chi 5</a></Link></li>
                                 <li><Link href="/contact"><a>Liên Hệ</a></Link></li>
                             </ul>
                         </nav>

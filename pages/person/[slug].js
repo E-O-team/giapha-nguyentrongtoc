@@ -1,18 +1,9 @@
-import {useRouter}          from 'next/router'
 import React, {Component}   from 'react';
 import {withRouter}         from 'next/router';
 import axios                from 'axios';
 import Link                 from 'next/link'
 import Router               from 'next/router';
 import Head                 from 'next/head';
-import {
-    FaServer,
-    FaPage4,
-    FaRegCalendarTimes,
-    FaRegHandshake,
-    FaFlag,
-    FaExclamationCircle
-}        from 'react-icons/fa';
 import PhaDo from '../components/PhaDo';
 import "./person_style.less"
 const RenderImage = ({person}) => {
@@ -25,9 +16,6 @@ const RenderImage = ({person}) => {
         return <img className="personPageImage" src="https://res.cloudinary.com/giaphatocphamphu/image/upload/v1530199129/jhl4nt2qd4txvwt3h7y0.jpg"/>
     }
 }
-
-
-
 class Person extends Component {
     static async getInitialProps({req, query}) {
         const res = await axios({
@@ -60,7 +48,7 @@ class Person extends Component {
         return(
             <div>
                 <Head>
-                    <title>24hvay || {fullName}</title>
+                    <title>{fullName}</title>
                     <meta property="og:title"       content={fullName}/>
                     <meta property="og:site_name"   content="Nguyễn Trọng Tộc"/>
                 </Head>
@@ -101,7 +89,5 @@ class Person extends Component {
         )
 
     }
-
 }
-
 export default withRouter(Person);

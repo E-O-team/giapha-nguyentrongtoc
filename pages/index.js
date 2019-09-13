@@ -3,7 +3,6 @@ import Slider                   from './components/slider/slider.js';
 import ServicesSection          from './components/section/services/servicesSection.js';
 import FeatureSection           from './components/section/feature/featureSection.js';
 import RequestAdviceSection     from './components/section/requestAdvice/requestAdviceSection.js';
-import WhyChooseUsSection       from './components/section/whyChooseUs/whyChooseUsSection.js';
 import MethodSection            from './components/section/method/methodSection';
 import Head                     from 'next/head';
 

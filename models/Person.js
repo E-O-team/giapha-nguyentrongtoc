@@ -1,8 +1,5 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-// const mongoosePaginate = require('mongoose-paginate');
-// var mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
-
 var Person = new keystone.List('Person', {
     map: { name: 'fullName' },
 	autokey: { path: 'slug', from: 'fullName', unique: true },
@@ -24,13 +21,7 @@ Person.add({
 
 });
 
-// console.log(Person.schema.post);
-
-// Person.schema.plugin(mongoosePaginate);
-// Person.schema.plugin(mongoose_fuzzy_searching, {fields: ['fullName']});
-
 Person.schema.post('save', function(doc, next) {
-    // console.log(this);
 
     if(doc.partner){
         Person.model.findOneAndUpdate(

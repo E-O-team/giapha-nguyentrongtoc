@@ -1,7 +1,6 @@
 import React, { Component }     from 'react';
 import Head                     from 'next/head';
 export default class Contact extends Component {
-
     render() {
         return (
             <div>

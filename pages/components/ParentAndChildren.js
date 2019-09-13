@@ -3,26 +3,6 @@ import axios from 'axios';
 import PersonCard from './PersonCard';
 import { Tree, TreeNode } from 'react-organizational-chart'
 export default class ParentAndChildren extends Component {
-
-    // static async getInitialProps({req}){
-    //     if(req){
-    //         const res = await axios({
-    //             url: '/api/branch/' + query.branch || 1,
-    //             method: 'GET',
-    //         });
-    //         return {person: res.data, loading: false,}
-    //     }else{
-    //         // this.getChildren()
-    //         axios.get("/api/person/" + this.props.person.slug)
-    //         .then(res => this.setState({
-    //             loading: false,
-    //             person: res.data
-    //         }))
-    //         .catch(err => console.log(err))
-    //         return {}
-    //     }
-    // }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +16,7 @@ export default class ParentAndChildren extends Component {
     }
 
     getChildren = () => {
-        axios.get("/api/person/" + this.props.initPerson.slug)
+        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/api/person/" + this.props.initPerson.slug)
         .then(res => this.setState({
             loading: false,
             person: res.data
@@ -68,7 +48,7 @@ export default class ParentAndChildren extends Component {
                                     key={child._id}
                                     label={
                                         <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
-                                            <PersonCard className={child._id} key={child._id} person={child} history={this.props.history} Phado={true}/>
+                                            <PersonCard className={child._id} key={child._id} person={child} Phado={true}/>
                                         </div>
                                     }
                                 >

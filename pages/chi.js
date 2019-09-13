@@ -1,19 +1,10 @@
 import { Component }            from 'react';
-
 import Head                     from 'next/head';
-import {
-    MdSmartphone }      from 'react-icons/md';
-import {
-    FaUserAlt,
-    FaRegAddressCard,
-    FaPassport }        from 'react-icons/fa';
+import axios                    from 'axios';
+import Link                     from 'next/link';
+import PersonCard               from './components/PersonCard';
 import './chi_style.less';
-import axios from 'axios';
-import Link                 from 'next/link';
-
-import PersonCard from './components/PersonCard';
 export default class Chi extends Component {
-
     static async getInitialProps({ query ,req }) {
         const res = await axios({
             url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch,
@@ -23,30 +14,7 @@ export default class Chi extends Component {
             people: res.data,
             branch: query.branch
         };
-        // if(req){
-        //     const res = await axios({
-        //         url: '/api/branch/' + query.branch || 1,
-        //         method: 'GET',
-        //     });
-        //     return {
-        //         people: res.data,
-        //         branch: query.branch
-        //     };
-        // }else{
-        //     axios.get('/api/branch/' + query.branch)
-        //     .then(res => { return {branch: query.branch, people: res.data}})
-        //     .catch(err => console.log(err))
-        //
-        // }
     }
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         people: []
-    //     }
-    // }
-
     render() {
         const { branch } = this.props
         const people = this.props.people

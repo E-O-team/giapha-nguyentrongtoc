@@ -21,3 +21,101 @@
 .hover-efect:hover::after {
   opacity: 1;
 }
+.person-card{
+    width: 88px;
+    height: 143px;
+    display: grid;
+    grid-template-rows: 65% 35%;
+}
+
+.person-icon-image{
+    height: 80px;
+    width: 65px;
+    margin: 0 auto;
+}
+
+.male{
+    color: #2fa1b1;
+}
+
+.female{
+    color: #d64f7c
+}
+
+.person-img-container-male img {
+    /* width: 85px; */
+    border-radius: 5%;
+    background: #13a0b2;
+    padding: 5px;
+    // width: 100px!Important;
+    // height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+	    text-align: center;
+    margin: 0 auto;
+}
+
+.person-img-container-female img {
+    /* width: 85px; */
+    border-radius: 5%;
+    background: #d64f7c;
+    padding: 5px;
+    // width: 100px!Important;
+    // height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+	    text-align: center;
+    margin: 0 auto;
+}
+
+.person-img-container {
+    // padding-top: 30px;
+    // width: 110px;
+    // height: 110px;
+}
+h6{
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+.person-img-container p {
+    margin-bottom: 0;
+
+}
+.person-img-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.couplediv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width:767px) {
+    .person-card{
+        width: 88px;
+        height: 143px;
+    }
+
+    .person-icon-image{
+        height: 80px;
+        width: 65px;
+    }
+
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+    .person-card{
+        width: 88px;
+        height: 143px;
+    }
+
+    .person-icon-image{
+        height: 80px;
+        width: 65px;
+    }
+}
