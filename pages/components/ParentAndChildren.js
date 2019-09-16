@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import PersonCard from './PersonCard';
-import { Tree, TreeNode } from 'react-organizational-chart'
+import axios                from 'axios';
+import PersonCard           from './PersonCard';
+import { Tree, TreeNode }   from 'react-organizational-chart'
 export default class ParentAndChildren extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +28,7 @@ export default class ParentAndChildren extends Component {
         const {person} = this.state
         const {level, generationsToFetch} = this.props
         const RenderChild = ({child}) => {
-            return <ParentAndChildren initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
+            return <ParentAndChildren size={this.props.size} initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
         }
 
 
@@ -48,7 +48,7 @@ export default class ParentAndChildren extends Component {
                                     key={child._id}
                                     label={
                                         <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
-                                            <PersonCard className={child._id} key={child._id} person={child} Phado={true}/>
+                                            <PersonCard size={this.props.size} className={child._id} key={child._id} person={child} Phado={true}/>
                                         </div>
                                     }
                                 >

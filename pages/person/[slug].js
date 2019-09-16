@@ -1,10 +1,15 @@
-import React, {Component}   from 'react';
-import {withRouter}         from 'next/router';
-import axios                from 'axios';
-import Link                 from 'next/link'
-import Router               from 'next/router';
-import Head                 from 'next/head';
-import PhaDo from '../components/PhaDo';
+import React, {Component}       from 'react';
+import {withRouter}             from 'next/router';
+import axios                    from 'axios';
+import Link                     from 'next/link'
+import Router                   from 'next/router';
+import Head                     from 'next/head';
+import PhaDo                    from '../components/PhaDo';
+
+// import canvg                    from 'canvg';
+import ReactDOMServer           from 'react-dom/server';
+import { MapInteractionCSS }    from 'react-map-interaction';
+
 import "./person_style.less"
 const RenderImage = ({person}) => {
     const { image, sex } = person
@@ -34,6 +39,9 @@ class Person extends Component {
             person: {},
             parent: {},
             partner: {},
+            zoom: 1,
+            x: 100,
+            y: 100,
         }
     }
 
@@ -82,8 +90,11 @@ class Person extends Component {
                         </div>
                     </div>
                 </section>
+
                 <section className="section-spacing">
-                    {this.state.person !== {} && <PhaDo person={this.props.person}/>}
+                    {this.state.person !== {} &&
+                        <PhaDo person={this.props.person} className="phado"/>
+                    }
                 </section>
             </div>
         )

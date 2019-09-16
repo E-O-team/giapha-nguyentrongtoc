@@ -28,6 +28,7 @@ export default class MyDocument extends Document {
                     <link rel       = "stylesheet"      href = "/static/common/css/styles.css" />
                     <link rel       = "stylesheet"      href = "/static/common/css/responsive.css" />
                     <link rel       = "stylesheet"      href = "https://fonts.googleapis.com/css?family=Roboto:400,500,700"></link>
+                
                 </Head>
                 <body>
                     <Main />

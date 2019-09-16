@@ -1,6 +1,6 @@
 .hover-efect{
     box-shadow: -1px 0px 30px 0px rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
+    border-radius: 10%;
     -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
@@ -22,10 +22,12 @@
   opacity: 1;
 }
 .person-card{
-    width: 88px;
-    height: 143px;
-    display: grid;
-    grid-template-rows: 65% 35%;
+    // width: 88px;
+    // height: 143px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
 }
 
 .person-icon-image{
@@ -36,35 +38,39 @@
 
 .male{
     color: #2fa1b1;
+
 }
 
 .female{
-    color: #d64f7c
+    color: #d64f7c;
+
 }
 
-.person-img-container-male img {
+.person-img-container-male  {
     /* width: 85px; */
-    border-radius: 5%;
+    // border-radius: 5%;
     background: #13a0b2;
-    padding: 5px;
+    background-color: #2fa1b1;
+    padding: 0.5rem;
     // width: 100px!Important;
     // height: 100px;
-    -o-object-fit: cover;
-       object-fit: cover;
-	    text-align: center;
+    // -o-object-fit: cover;
+    //    object-fit: cover;
+	//     text-align: center;
     margin: 0 auto;
 }
 
-.person-img-container-female img {
+.person-img-container-female  {
     /* width: 85px; */
-    border-radius: 5%;
+    // border-radius: 5%;
     background: #d64f7c;
-    padding: 5px;
+    background-color: #d64f7c;
+    padding: 0.5rem;
     // width: 100px!Important;
     // height: 100px;
-    -o-object-fit: cover;
-       object-fit: cover;
-	    text-align: center;
+    // -o-object-fit: cover;
+    //    object-fit: cover;
+	//     text-align: center;
     margin: 0 auto;
 }
 
@@ -74,9 +80,14 @@
     // height: 110px;
 }
 h6{
-    font-size: 12px;
+    color: #ffffff;
+    font-size: 0.9rem;
     margin-bottom: 0;
     margin-top: 5px;
+    @font-face {
+        font-family: "DejaVu Sans";
+        src: url(https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans.ttf) format("truetype");
+    }
 }
 .person-img-container p {
     margin-bottom: 0;
@@ -94,28 +105,38 @@ h6{
     align-items: center;
 }
 
+.listCard{
+    padding: 0px;
+    width: 88px;
+    height: 143px;
+    display: grid;
+    grid-template-rows: 65% 35%;
+}
 
 @media only screen and (max-width:767px) {
-    .person-card{
-        width: 88px;
-        height: 143px;
+    h6{
+        font-size: 0.65rem
     }
-
-    .person-icon-image{
-        height: 80px;
-        width: 65px;
+    .person-card{
+        padding: 1px
+    }
+    .person-img-container-male{
+        padding: 0.2rem;
+    }
+    .person-img-container-female{
+        padding: 0.2rem;
     }
 
 }
-
+//
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
-    .person-card{
-        width: 88px;
-        height: 143px;
+    h6{
+        font-size: 0.75rem
     }
-
-    .person-icon-image{
-        height: 80px;
-        width: 65px;
+    .person-img-container-male{
+        padding: 0.2rem;
+    }
+    .person-img-container-female{
+        padding: 0.2rem;
     }
 }
