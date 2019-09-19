@@ -17,7 +17,7 @@ class ServicesSection extends Component {
                         <div className="col-md-10 m-auto">
                             <div className="section-title margin-bottom-60 text-center">
                                 <h4>Một số thông tin chi tiết về tộc</h4>
-                                <p>tiêu đề phụ điền tại đây</p>
+                                <p>NGUYỄN TRỌNG TỘC là một dòng họ lớn bao gồm 04 Chi từ Chi 1 đến Chi 4 tại Thôn 7 (nay là Thôn Trung Thành) Xã Cẩm Duệ, Huyện Cẩm Xuyên, Tỉnh Hà Tĩnh được bao bọc bởi 2 con kênh N1 và N2 của Hồ Kẻ Gỗ và nhìn ra cánh đồng lúa trải dài xa tắp.</p>
                             </div>
                         </div>
                     </div>

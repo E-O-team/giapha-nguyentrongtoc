@@ -82,7 +82,7 @@ class Slider extends Component {
                         <div className="col-md-7">
                             <div className="themeix-slider-content">
                                 <h1 className="wow fadeIn"  data-wow-duration="1s">Nguyễn Trọng Tộc</h1>
-                                <p className="wow fadeIn"  data-wow-duration="3s">Đây là chỗ giới thiệu ngắn về Nguyễn Trọng Tộc khoảng 2 đoạn văn. Đây là chỗ giới thiệu ngắn về Nguyễn Trọng Tộc khoảng 2 đoạn văn.</p>
+                                <p className="wow fadeIn"  data-wow-duration="3s">“Con người có Tổ có Tông <br/> Như cây có cội như sông có nguồn”</p>
                                 <div className="themeix-slider-btn wow fadeIn"  data-wow-duration="5s">
                                 </div>
                             </div>
