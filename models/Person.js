@@ -3,6 +3,7 @@ var Types = keystone.Field.Types;
 var Person = new keystone.List('Person', {
     map: { name: 'fullName' },
 	autokey: { path: 'slug', from: 'fullName', unique: true },
+    label: "Thành Viên",
 });
 
 Person.add({

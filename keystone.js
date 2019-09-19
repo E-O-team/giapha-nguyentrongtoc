@@ -40,7 +40,8 @@ app.prepare()
 
   // Configure the navigation bar in Keystone's Admin UI
   keystone.set('nav', {
-   users: 'users',
+   "admin": 'users',
+   "Thành viên": "people"
   });
 
   keystone.set('admin path' , "admin");
