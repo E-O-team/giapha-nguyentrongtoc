@@ -61,15 +61,14 @@ class PersonCard extends Component {
     render() {
         if((this.state.partner !== undefined || this.state.partner !== null) && this.props.Phado == true){
             return(
-                <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>
                     <div className="couplediv">
                         <div align='center' justify='center' className="persondiv" >
                             {(this.state.person.sex == "nữ") ?
-                                <div className="person-card person-img-container-female hover-efect text-center">
+                                <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a><div className="person-card person-img-container-female hover-efect text-center">
                                     <h6>{this.state.person.fullName}</h6>
-                                </div>
+                                </div></a></Link>
                                 :
-                                <div className="person-card person-img-container-male hover-efect text-center">
+                                <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a><div className="person-card person-img-container-male hover-efect text-center">
                                     <h6>{this.state.person.fullName}</h6>
                                 </div>
                             }
@@ -77,18 +76,18 @@ class PersonCard extends Component {
                         {(this.state.partner !== null) &&
                             <div align='center' justify='center' className="persondiv">
                                 {(this.state.partner.sex == "nữ") ?
-                                    <div className="person-card person-img-container-female hover-efect text-center">
+                                    <Link href="/person/[slug]" as={`/person/${this.state.partner.slug}`}><a><div className="person-card person-img-container-female hover-efect text-center">
                                         <h6>{this.state.partner.fullName}</h6>
-                                    </div>
+                                    </div></a></Link>
                                     :
-                                    <div className="person-card person-img-container-male hover-efect text-center">
+                                    <Link href="/person/[slug]" as={`/person/${this.state.partner.slug}`}><a><div className="person-card person-img-container-male hover-efect text-center">
                                         <h6>{this.state.partner.fullName}</h6>
-                                    </div>
+                                    </div></a></Link>
                                 }
                             </div>
                         }
                     </div>
-                </a></Link>
+
             )
             // return(
             //     <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>
