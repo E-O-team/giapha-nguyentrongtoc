@@ -38,25 +38,28 @@ class PersonCard extends Component {
 
     checkPartner = () => {
         const {partner} = this.state.person
-        if(typeof partner == 'string' ){
-            axios.get('https://giapha-nguyentrongtoc.herokuapp.com/person-id/' + partner)
-            .then(res => this.setState({
-                partner: res.data,
-                loading: false,
-            }))
-            .catch(err => console.log(err))
-        }else if (typeof partner == 'object') {
-            axios.get('https://giapha-nguyentrongtoc.herokuapp.com/person-id/' + partner._id)
-            .then(res => this.setState({
-                partner: res.data,
-                loading: false,
-            }))
-            .catch(err => console.log(err))
+        if(partner){
+            if(typeof partner == 'string' ){
+                axios.get('/api/person-id/' + partner)
+                .then(res => this.setState({
+                    partner: res.data,
+                    loading: false,
+                }))
+                .catch(err => console.log(err))
+            }else if (typeof partner == 'object') {
+                console.log(partner);
+                axios.get('/api/person-id/' + partner._id)
+                .then(res => this.setState({
+                    partner: res.data,
+                    loading: false,
+                }))
+                .catch(err => console.log(err))
+            }
         }
     }
 
     render() {
-        if(this.state.partner !== undefined && this.props.Phado == true){
+        if((this.state.partner !== undefined || this.state.partner !== null) && this.props.Phado == true){
             return(
                 <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>
                     <div className="couplediv">
@@ -87,19 +90,19 @@ class PersonCard extends Component {
                     </div>
                 </a></Link>
             )
-            return(
-                <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>
-                        {(this.state.person.sex == "nữ") ?
-                            <div className="person-card person-img-container-female hover-efect text-center">
-                                <h6>{this.state.person.fullName}</h6>
-                            </div>
-                            :
-                            <div className="person-card person-img-container-male hover-efect text-center">
-                                <h6>{this.state.person.fullName}</h6>
-                            </div>
-                        }
-                </a></Link>
-            )
+            // return(
+            //     <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>
+            //             {(this.state.person.sex == "nữ") ?
+            //                 <div className="person-card person-img-container-female hover-efect text-center">
+            //                     <h6>{this.props.person.fullName}</h6>
+            //                 </div>
+            //                 :
+            //                 <div className="person-card person-img-container-male hover-efect text-center">
+            //                     <h6>{this.props.person.fullName}</h6>
+            //                 </div>
+            //             }
+            //     </a></Link>
+            // )
         }else{
             return(
                 <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a>

@@ -23,15 +23,33 @@ const RenderImage = ({person}) => {
 }
 class Person extends Component {
     static async getInitialProps({req, query}) {
-        const res = await axios({
-            url: 'https://giapha-nguyentrongtoc.herokuapp.com/person/' + query.slug,
-            method: 'GET',
-        });
-        return {
-            person: res.data,
-            slug: query.slug
-        };
+        // const res = await axios({
+        //     url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/person/' + query.slug,
+        //     method: 'GET',
+        // });
+        // return {
+        //     person: res.data,
+        //     slug: query.slug
+        // };
+
+        const isServer = !!req
+        if(isServer){
+            // called on server
+            console.log("server ran");
+            const res = await axios.get('https://giapha-nguyentrongtoc.herokuapp.com/api/person/' + query.slug)
+            return {
+                person: res.data,
+                slug: query.slug
+            };
+        } else {
+            const res = await axios.get("/api/person/" + query.slug)
+            return {
+                person: res.data,
+                slug: query.slug
+            };
+        }
     }
+
 
     constructor(props) {
         super(props);
@@ -43,12 +61,6 @@ class Person extends Component {
             x: 100,
             y: 100,
         }
-    }
-
-    componentDidMount() {
-        axios.get("/api/person/" + this.props.slug)
-        .then(res => this.setState({person: res.data}))
-        .catch(err => console.log(err))
     }
 
     render() {
@@ -65,7 +77,7 @@ class Person extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="choose-us-container" style={{display: 'flex', alignItems: "center", justifyContent: "center"}}>
-                                    <RenderImage person={this.state.person}/>
+                                    <RenderImage person={this.props.person}/>
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -92,7 +104,7 @@ class Person extends Component {
                 </section>
 
                 <section className="section-spacing">
-                    {this.state.person !== {} &&
+                    {this.props.person !== {} &&
                         <PhaDo person={this.props.person} className="phado"/>
                     }
                 </section>

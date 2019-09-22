@@ -16,7 +16,7 @@ export default class ParentAndChildren extends Component {
     }
 
     getChildren = () => {
-        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/person/" + this.props.initPerson.slug)
+        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/api/person/" + this.props.initPerson.slug)
         .then(res => this.setState({
             loading: false,
             person: res.data
@@ -28,7 +28,7 @@ export default class ParentAndChildren extends Component {
         const {person} = this.state
         const {level, generationsToFetch} = this.props
         const RenderChild = ({child}) => {
-            return <ParentAndChildren size={this.props.size} initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
+            return <ParentAndChildren Phado={true} size={this.props.size} initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
         }
 
 
