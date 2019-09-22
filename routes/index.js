@@ -30,6 +30,10 @@ exports = module.exports = nextApp => keystoneApp => {
 		const Person = keystone.list('Person');
 		Person.model
 		.findOne({slug: req.params.slug})
+		.populate('parent partner children', '_id fullName sex birth death generation branch partner parent children information image', null, {sort: "createdAt"})
+		// .populate('parent partner children', ['fullName', 'sex', 'birth', 'death', 'generation', 'branch', 'partner', 'parent', 'children', 'information', 'image'], null, {sort: "createdAt"})
+
+		// .populate('parent partner children', {sort: "createdAt"})
 		.populate('children parent partner')
 		.exec(function (err, results) {
 			if (err) throw err;
@@ -42,6 +46,10 @@ exports = module.exports = nextApp => keystoneApp => {
 		Person.model
 		.findById(req.params.id)
 		.populate('children parent partner')
+		// .populate('parent partner children', null, {sort: "createdAt"})
+		// .populate({
+		// 	path:
+		// })
 		.exec(function (err, results) {
 			if (err) throw err;
 			res.json(results);

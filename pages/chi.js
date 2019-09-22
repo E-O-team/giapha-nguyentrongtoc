@@ -7,7 +7,7 @@ import './chi_style.less';
 export default class Chi extends Component {
     static async getInitialProps({ query ,req }) {
         const res = await axios({
-            url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch,
+            url: 'https://giapha-nguyentrongtoc.herokuapp.com/branch/' + query.branch,
             method: 'GET',
         });
         return {

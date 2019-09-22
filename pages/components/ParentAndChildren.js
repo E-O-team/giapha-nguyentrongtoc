@@ -16,7 +16,7 @@ export default class ParentAndChildren extends Component {
     }
 
     getChildren = () => {
-        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/api/person/" + this.props.initPerson.slug)
+        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/person/" + this.props.initPerson.slug)
         .then(res => this.setState({
             loading: false,
             person: res.data

@@ -5,6 +5,7 @@ var Person = new keystone.List('Person', {
 	autokey: { path: 'slug', from: 'fullName', unique: true },
     label: "Thành Viên",
 });
+var timestamps = require('mongoose-timestamp');
 
 Person.add({
     fullName: { type: String, initial:true, required: true,label: 'Họ và tên', index:true,  },
@@ -18,12 +19,9 @@ Person.add({
     children: {type: Types.Relationship, ref:'Person', label: 'Con', many: true},
     information: { type: Types.Html, wysiwyg: true, height: 150, label: "Thông tin" },
 	image: {type: Types.CloudinaryImage, label: 'Ảnh'},
-
-
 });
 
 Person.schema.post('save', function(doc, next) {
-
     if(doc.partner){
         Person.model.findOneAndUpdate(
             {_id : doc.partner},
@@ -62,4 +60,6 @@ Person.schema.post('save', function(doc, next) {
 
 });
 
+Person.schema.plugin(timestamps);
+Person.defaultSort = '-createdAt';
 Person.register();
