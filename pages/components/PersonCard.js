@@ -70,7 +70,7 @@ class PersonCard extends Component {
                                 :
                                 <Link href="/person/[slug]" as={`/person/${this.state.person.slug}`}><a><div className="person-card person-img-container-male hover-efect text-center">
                                     <h6>{this.state.person.fullName}</h6>
-                                </div>
+                                </div></a></Link>
                             }
                         </div>
                         {(this.state.partner !== null) &&
