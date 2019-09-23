@@ -1,4 +1,5 @@
 const keystone = require('keystone');
+var enforce = require('express-sslify');
 var cors = require('cors')
 // Setup Route Bindings
 exports = module.exports = nextApp => keystoneApp => {
