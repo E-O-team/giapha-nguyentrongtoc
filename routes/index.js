@@ -1,7 +1,8 @@
 const keystone = require('keystone');
-
+var cors = require('cors')
 // Setup Route Bindings
 exports = module.exports = nextApp => keystoneApp => {
+	keystoneApp.use(cors())
 
 	// Next request handler
 	const handle = nextApp.getRequestHandler();
