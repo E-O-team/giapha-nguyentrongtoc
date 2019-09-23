@@ -6,14 +6,31 @@ import PersonCard               from './components/PersonCard';
 import './chi_style.less';
 export default class Chi extends Component {
     static async getInitialProps({ query ,req }) {
-        const res = await axios({
-            url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch,
-            method: 'GET',
-        });
-        return {
-            people: res.data,
-            branch: query.branch
-        };
+        const isServer = !!req
+        if(isServer){
+            // called on server
+            console.log("server ran");
+            const res = await axios.get('https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch)
+            return {
+                people: res.data,
+                branch: query.branch
+            };
+        } else {
+            const res = await axios.get("/api/branch/" + query.branch)
+            return {
+                people: res.data,
+                branch: query.branch
+            };
+        }
+        //
+        // const res = await axios({
+        //     url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch,
+        //     method: 'GET',
+        // });
+        // return {
+        //     people: res.data,
+        //     branch: query.branch
+        // };
     }
     render() {
         const { branch } = this.props

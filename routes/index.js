@@ -2,6 +2,7 @@ const keystone = require('keystone');
 var cors = require('cors')
 // Setup Route Bindings
 exports = module.exports = nextApp => keystoneApp => {
+	keystoneApp.use(enforce.HTTPS({ trustProtoHeader: true }))
 	keystoneApp.use(cors())
 
 	// Next request handler
