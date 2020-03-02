@@ -25,7 +25,7 @@ keystone.init({
    'wysiwyg menubar': true,
    'cloudinary config': 'cloudinary://915351483667299:9im4e4B0Xd0060utUk82TN41s14@giaphatocphamphu',
    'cookie secret': '6D61822FBEAED8635A4A52241FEC3',
-   'mongo': "mongodb://NeoTheSecond1404:123456zz@ds129670.mlab.com:29670/nguyentrongtoc"
+   'mongo': "mongodb://127.0.0.1:27017/nguyentrongtoc"
 });
 
 // Load your project's Models

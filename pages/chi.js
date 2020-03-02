@@ -1,16 +1,16 @@
-import { Component }            from 'react';
-import Head                     from 'next/head';
-import axios                    from 'axios';
-import Link                     from 'next/link';
-import PersonCard               from './components/PersonCard';
+import { Component } from 'react';
+import Head from 'next/head';
+import axios from 'axios';
+import Link from 'next/link';
+import PersonCard from './components/PersonCard';
 import './chi_style.less';
 export default class Chi extends Component {
-    static async getInitialProps({ query ,req }) {
+    static async getInitialProps({ query, req }) {
         const isServer = !!req
-        if(isServer){
+        if (isServer) {
             // called on server
             console.log("server ran");
-            const res = await axios.get('https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch)
+            const res = await axios.get('https://nguyentrongtoc-camdue.com/api/branch/' + query.branch)
             return {
                 people: res.data,
                 branch: query.branch
@@ -24,7 +24,7 @@ export default class Chi extends Component {
         }
         //
         // const res = await axios({
-        //     url: 'https://giapha-nguyentrongtoc.herokuapp.com/api/branch/' + query.branch,
+        //     url: 'https://nguyentrongtoc-camdue.com/api/branch/' + query.branch,
         //     method: 'GET',
         // });
         // return {
@@ -35,7 +35,7 @@ export default class Chi extends Component {
     render() {
         const { branch } = this.props
         const people = this.props.people
-        return(
+        return (
             <div>
                 <Head>
                     <title>Nguyễn Trọng Tộc || Chi {branch}</title>
@@ -44,7 +44,7 @@ export default class Chi extends Component {
                     className="about-section section-spacing bg-color1 wow fadeIn"
                     data-wow-duration="1s"
                 >
-                    <div className="container" style={{paddingBottom: "25px"}}>
+                    <div className="container" style={{ paddingBottom: "25px" }}>
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="row">
@@ -59,8 +59,8 @@ export default class Chi extends Component {
                                 </div>
                                 <div className="member-container">
                                     {this.props.people.map((person, i) => {
-                                        return(
-                                            <PersonCard person={person} key={i}/>
+                                        return (
+                                            <PersonCard person={person} key={i} />
                                         )
                                     })}
                                 </div>

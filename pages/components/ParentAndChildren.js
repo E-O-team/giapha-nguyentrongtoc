@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios                from 'axios';
-import PersonCard           from './PersonCard';
-import { Tree, TreeNode }   from 'react-organizational-chart'
+import axios from 'axios';
+import PersonCard from './PersonCard';
+import { Tree, TreeNode } from 'react-organizational-chart'
 export default class ParentAndChildren extends Component {
     constructor(props) {
         super(props);
@@ -16,44 +16,44 @@ export default class ParentAndChildren extends Component {
     }
 
     getChildren = () => {
-        axios.get("https://giapha-nguyentrongtoc.herokuapp.com/api/person/" + this.props.initPerson.slug)
-        .then(res => this.setState({
-            loading: false,
-            person: res.data
-        }))
-        .catch(err => console.log(err))
+        axios.get("https://nguyentrongtoc-camdue.com/api/person/" + this.props.initPerson.slug)
+            .then(res => this.setState({
+                loading: false,
+                person: res.data
+            }))
+            .catch(err => console.log(err))
     }
 
     render() {
-        const {person} = this.state
-        const {level, generationsToFetch} = this.props
-        const RenderChild = ({child}) => {
-            return <ParentAndChildren Phado={true} size={this.props.size} initPerson={child} level={level + 1} generationsToFetch={generationsToFetch}/>
+        const { person } = this.state
+        const { level, generationsToFetch } = this.props
+        const RenderChild = ({ child }) => {
+            return <ParentAndChildren Phado={true} size={this.props.size} initPerson={child} level={level + 1} generationsToFetch={generationsToFetch} />
         }
 
 
-        if(this.state.loading == true){
+        if (this.state.loading == true) {
             return (
-                <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
+                <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
                     <h2>đang tải...</h2>
                 </div>
             );
-        }else{
-            if(person.children.length > 0){
-                return(
-                    <div style={{display: 'flex', flexDirection: "row", justifyContent: "center"}}>
+        } else {
+            if (person.children.length > 0) {
+                return (
+                    <div style={{ display: 'flex', flexDirection: "row", justifyContent: "center" }}>
                         {person.children.map((child, i) => {
-                            return(
+                            return (
                                 <TreeNode
                                     key={child._id}
                                     label={
-                                        <div style={{display: 'flex', flexDirection: "column", alignItems: "center"}}>
-                                            <PersonCard size={this.props.size} className={child._id} key={child._id} person={child} Phado={true}/>
+                                        <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
+                                            <PersonCard size={this.props.size} className={child._id} key={child._id} person={child} Phado={true} />
                                         </div>
                                     }
                                 >
-                                    {(child.children.length > 0 && this.props.level < generationsToFetch ) ?
-                                        <RenderChild child={child}/>
+                                    {(child.children.length > 0 && this.props.level < generationsToFetch) ?
+                                        <RenderChild child={child} />
                                         :
                                         null
                                     }
@@ -62,7 +62,7 @@ export default class ParentAndChildren extends Component {
                         })}
                     </div>
                 )
-            }else{
+            } else {
                 return null
             }
         }
